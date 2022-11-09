@@ -21,9 +21,28 @@ sort([0, 1, -3]); // [-3, 0, 1]
 sort([]); // []
 ***********************************************************************/
 
+
+
+//base case - if nums = empty return empty array
 function sort(nums, sorted = []) {
-    // Your code here
+    if (nums.length === 0) return sorted;
+    let highernum = nums[0]
+    for (let ele of nums) {
+        let currentnum = ele;
+        console.log(currentnum)
+        if (currentnum >= highernum) {
+            highernum = currentnum;
+        }
+    }
+    sorted.unshift(highernum);
+    nums.splice(nums.indexOf(highernum), 1)
+    return sort(nums, sorted)
 }
+
+console.log(sort([4,1,6,3,1,7])); // [1, 1, 3, 4, 6, 7]
+sort([0, 1, -3]); // [-3, 0, 1]
+sort([]); // []
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = sort;
